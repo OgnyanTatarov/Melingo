@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Word
+    <input type="text" id="inputWord">
+    <button id="PostButton">Add a Word</button>
+    <a href="index.html">Go back</a>
+    <h3>MelangoId 
+    <input type="text" id="MelangoId">
+    <h3>How is your word translated 
+    <input type="text" id="TranslateFull">
+    How can you use it in a sentance 
+    <input type="text" id="Text">
+
+    <script>
+        const MelangoId = document.getElementById('MelangoId')
+        const TranslationFull = document.getElementById('TranslateFull')
+        const Text = document.getElementById('Text')
+        const Entry = document.getElementById('inputWord')
+        const postRequest = async(e) => {
+
+            e.preventDefault(e)
+            const url = "http://localhost:8000/dictionary/add/"
+            const data = {
+                MelangoId: MelangoId.value,
+                TranslationFull: TranslationFull.value,
+                Text: Text.value,
+                Entry: Entry.value
+            }
+            
+            const res = await fetch(url,{
+                method:'POST',
+                headers: {
+                    'Content-Type':'application/json'
+                },
+                body: JSON.stringify(data)
+            }).then(res =>{
+                console.log(res)
+            })
+
+            //const json = await res.json()
+            //console.log(json)
+
+
+            
+
+
+        }
+            
+        const PostButton = document.getElementById('PostButton')
+        PostButton.addEventListener('click',postRequest)
+
+
+
+    </script>
+       
+</body>
+</html>

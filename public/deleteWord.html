@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Word you want to delete
+    <input type="text" id="inputWord">
+    <button id="DeleteButton">Delete a Word</button>
+    <a href="index.html">Go back</a>
+    <input type="text" id="output" readonly = true >
+
+    <script>
+        const word = document.getElementById('inputWord')
+        const output = document.getElementById('output')
+        const deleteButton = document.getElementById('DeleteButton')
+        const deleteRequest = async(e) =>{
+            e.preventDefault()
+            const url = `http://localhost:8000/dictionary/delete/${word.value}`
+            const res = await fetch(url,{
+                method:'DELETE',
+                headers: {
+                    'Content-Type':'application/json'
+                }
+            }).then(async(response) =>{
+                const res = await response.json()
+                output.value = res.message
+            })
+        }
+
+        deleteButton.addEventListener('click',deleteRequest)
+
+
+
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Word
+    <input type="text" id="inputWord">
+    <button id="PutButton">Update a Word</button>
+    <a href="index.html">Go back</a>
+    <h3>New Translation 
+        <input type="text"  id="NewTransaltion">
+        New Usage 
+        <input type="text"  id="NewUsage">
+    <input readonly = true id="responseField"></input>
+
+        <script>
+            const word = document.getElementById('inputWord')
+            const putButton = document.getElementById('PutButton')
+            const NewTransaltion = document.getElementById('NewTransaltion')
+            const NewUsage = document.getElementById('NewUsage')
+            const output = document.getElementById('responseField')
+           
+            const postRequest = async (e) => {
+                e.preventDefault()
+                const data = {
+                TransaltionFull: NewTransaltion.value,
+                Text: NewUsage.value
+            }
+                const url = `http://localhost:8000/dictionary/update/${word.value}`
+
+                const res = await fetch(url,{
+                    method: 'PUT',
+                    headers: {
+                    'Content-Type':'application/json'
+                },
+                body: JSON.stringify(data)
+                }).then(async (result) => {
+                const res = await result.json()
+                    
+                    output.value = res.message
+                })
+                
+            }
+
+            putButton.addEventListener('click',postRequest)
+
+
+
+        </script>
+
+
+</body>
+</html>

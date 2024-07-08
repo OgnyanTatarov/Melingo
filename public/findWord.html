@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=`, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Word
+    <input type="text" id="inputWord">
+    <button id="GetButton">Find a Word</button>
+    <a href="index.html">Go back</a>
+    <h3>Your Word is 
+    <input type="text" readonly = true id="EntryBox">
+    and it's translates to 
+    <input type="text" readonly = true id="TranslateFull">
+    and you can use it like that:
+    
+    <input type = "text" readonly = true id="Text" >
+    <script>
+        const input = document.getElementById('inputWord')
+         const entryBox = document.getElementById('EntryBox')
+         const transalation = document.getElementById('TranslateFull')
+         const text = document.getElementById('Text')
+
+         const getRequest = async (e) =>{
+            e.preventDefault();
+            const url = `http://localhost:8000/dictionary/find/${input.value}`
+            
+            const res = await fetch(url,{
+                method: 'GET',
+                mode: "no-cors"
+            })
+            //console.log(res)
+            const data = await res.json()
+            entryBox.value = data.Entry
+            transalation.value = data.TranslationFull
+            text.value = data.Text
+            
+
+         }
+
+         const button = document.getElementById('GetButton')
+         button.addEventListener('click',getRequest)
+        
+
+
+    </script>
+</body>
+</html>
+
+
+
+
