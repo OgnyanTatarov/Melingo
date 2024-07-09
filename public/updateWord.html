@@ -6,11 +6,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<style>
+body{
+        padding: 10px;
+        font-size: 20px;
+        font-weight: 300;
+    }
+    button{
+        margin: 10px;
+        height: 40px;
+        
+        background: #85BD02;
+        border: 0;
+        padding: 5px 10px;
+        border-radius: 5px;
+        color: white;
+        transition: all 0.6s;
+    }
+    button:hover{
+        box-shadow: 1px 1px 2px black;
+    }
+   
+    input{
+        margin: 10px;
+        height: 25px;
+        transition: all 0.6s;
+        box-shadow:none;
+    }
+    #inputWord:hover,#PutButton:hover,#GoBack:hover,input:hover
+    {
+        box-shadow: 1px 1px 2px black;
+    }
+    #GoBack > a
+    {
+        background: #85BD02;
+        color: #fff;
+        text-align: center;
+        text-decoration: none;
+    }
+  
+
+
+
+</style>
 <body>
     Word
     <input type="text" id="inputWord">
     <button id="PutButton">Update a Word</button>
-    <a href="index.html">Go back</a>
+    <button id = "GoBack"><a href="index.html">Go back</a></button>
     <h3>New Translation 
         <input type="text"  id="NewTransaltion">
         New Usage 

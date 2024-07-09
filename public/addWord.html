@@ -6,16 +6,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<style>
+    body{
+        padding: 10px;
+        font-size: 20px;
+        font-weight: 300;
+    }
+    input{
+        margin: 10px;
+        height: 25px;
+        transition: all 0.6s;
+        box-shadow:none;
+    }
+    button{
+        margin: 10px;
+        height: 30px;
+        background: #85BD02;
+        border: 0;
+        padding: 5px 10px;
+        border-radius: 5px;
+        color: white;
+        transition: all 0.6s;
+    }
+    #GoBack > a
+    {
+        background: #85BD02;
+        color: #fff;
+        text-align: center;
+        text-decoration: none;
+    }
+    #inputWord:hover,#PostButton:hover,#GoBack:hover,input:hover
+    {
+        box-shadow: 1px 1px 2px black;
+    }
+    #Translation{
+        margin-top: 20px;;
+    }
+
+ 
+
+</style>
 <body>
     Word
     <input type="text" id="inputWord">
     <button id="PostButton">Add a Word</button>
-    <a href="index.html">Go back</a>
-    <h3>MelangoId 
+    <button id = "GoBack"><a href="index.html">Go back</a></button>
+    <h3>MelangoId </h3>
     <input type="text" id="MelangoId">
-    <h3>How is your word translated 
+    <div>How is your word translated </div>
     <input type="text" id="TranslateFull">
-    How can you use it in a sentance 
+    <div id="Translation">How can you use it in a sentance </div>
     <input type="text" id="Text">
 
     <script>
